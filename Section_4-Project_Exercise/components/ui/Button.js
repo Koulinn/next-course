@@ -3,9 +3,13 @@ import React from "react"
 import classes from "./button.module.css"
 
 export default function Button(props) {
-  return (
-    <Link href={props.link} legacyBehavior className={classes.btn}>
-      <a>{props.children}</a>
-    </Link>
-  )
+  if (props.link) {
+    return (
+      <Link href={props.link} legacyBehavior>
+        <a className={classes.btn}>{props.children}</a>
+      </Link>
+    )
+  } else {
+    return <button>{props.children}</button>
+  }
 }
