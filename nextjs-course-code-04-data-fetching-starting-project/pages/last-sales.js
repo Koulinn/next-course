@@ -11,8 +11,9 @@ const fetcher = async (url) => {
   return data
 }
 
-const LastSalesPage = () => {
-  const [sales, setSales] = useState([])
+// Start the component with the sales from the server side
+const LastSalesPage = (props) => {
+  const [sales, setSales] = useState(props.sales)
   //   const [apiStatus, setApiStatus] = useState("")
 
   const { data, error, isLoading } = useSWR(URL, fetcher)
@@ -89,6 +90,31 @@ const LastSalesPage = () => {
       })}
     </ul>
   )
+}
+
+export async function getStaticProps() {
+  const res = await fetch(
+    "https://next-tutorial-f2046-default-rtdb.europe-west1.firebasedatabase.app/sales.json"
+  )
+
+  const data = await res.json()
+  const formattedSales = []
+
+  for (const key in data) {
+    const formattedData = {
+      id: key,
+      username: data[key].username,
+      volume: data[key].volume,
+    }
+    formattedSales.push(formattedData)
+  }
+
+  return {
+    props: {
+      sales: formattedSales,
+      revalidate: 10, // timer to re-execute after deployment
+    },
+  }
 }
 
 export default LastSalesPage
