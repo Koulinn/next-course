@@ -19,7 +19,7 @@ export default function EventsPage(props) {
     <div>
       <Head>
         <title>Events Page</title>
-        <description>Add value to SEO optimizations</description>
+        <meta name="description" content="Add value to SEO optimizations" />
       </Head>
       <h1>EventsPage</h1>
       <EventsSearch onSearch={findEventsHandler} />

@@ -21,7 +21,7 @@ export default function EventDetailPage(props) {
     <>
       <Head>
         <title>{event.title}</title>
-        <description>{event.description}</description>
+        <meta name="description" content={event.description} />
       </Head>
       <EventSummary title={event.title} />
       <EventLogistics

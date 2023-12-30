@@ -23,7 +23,7 @@ export default function FilteredEventsPage(props) {
     <div>
       <Head>
         <title>Search events</title>
-        <description>All events</description>
+        <meta name="description" content="All events" />
       </Head>
       <EventList items={filteredEvents} />
     </div>
