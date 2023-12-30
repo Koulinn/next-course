@@ -5,6 +5,8 @@ import EventsSearch from "../../components/events/EventsSearch"
 import { useRouter } from "next/router"
 import { getMockData } from "../../utils"
 
+import Head from "next/head"
+
 export default function EventsPage(props) {
   // const events = getAllEvents()
   const router = useRouter()
@@ -15,6 +17,10 @@ export default function EventsPage(props) {
   }
   return (
     <div>
+      <Head>
+        <title>Events Page</title>
+        <description>Add value to SEO optimizations</description>
+      </Head>
       <h1>EventsPage</h1>
       <EventsSearch onSearch={findEventsHandler} />
       <EventList items={props.events} />

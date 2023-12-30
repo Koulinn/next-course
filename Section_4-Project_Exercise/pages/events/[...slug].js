@@ -2,6 +2,7 @@ import { useRouter } from "next/router"
 import React from "react"
 import { getFilteredEvents } from "../../dummy-data"
 import EventList from "../../components/events/EventList"
+import Head from "next/head"
 
 export default function FilteredEventsPage(props) {
   if (props?.isLoading) {
@@ -20,6 +21,10 @@ export default function FilteredEventsPage(props) {
 
   return (
     <div>
+      <Head>
+        <title>Search events</title>
+        <description>All events</description>
+      </Head>
       <EventList items={filteredEvents} />
     </div>
   )

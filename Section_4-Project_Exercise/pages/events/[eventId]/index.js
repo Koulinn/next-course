@@ -5,6 +5,7 @@ import EventSummary from "../../../components/event-detail/event-summary"
 import EventLogistics from "../../../components/event-detail/event-logistics"
 import EventContent from "../../../components/event-detail/event-content"
 import { getMockData } from "../../../utils"
+import Head from "next/head"
 
 export default function EventDetailPage(props) {
   // const router = useRouter()
@@ -18,6 +19,10 @@ export default function EventDetailPage(props) {
   }
   return (
     <>
+      <Head>
+        <title>{event.title}</title>
+        <description>{event.description}</description>
+      </Head>
       <EventSummary title={event.title} />
       <EventLogistics
         date={event.date}
